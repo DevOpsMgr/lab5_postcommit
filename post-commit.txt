@@ -1,0 +1,19 @@
+﻿#!/bin/sh
+
+	curl --user admin:cd060faeac561a2de90487bfefe746da http://localhost:8080/job/my_php_app_dqt/build?token=autodeploy_dqt
+
+
+cd  'e:\ci_project\auto_deploy_dqt\'
+
+docker stop lab5_postcommit_ctn
+docker rm  lab5_postcommit_ctn
+docker build -t lab5_postcommit_img -f $(pwd)/dockerfile .
+
+#docker run -d --name lab5_postcommit_ctn -p 80:80 -v /$(pwd)/src/:/var/www/html/ lab5_postcommit_img
+#docker run -d --name lab5_postcommit_ctn -p 5000:80 -v //e/ci_project/lab5_postcommit/src/:/var/www/html/  lab5_postcommit_img
+
+
+#REM /e/ci_project/lab5_postcommit/BuildExcutable
+
+Echo "test"
+exit 0
